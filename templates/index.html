@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Application Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<h1>Job Application Tracker</h1>
+
+<!-- <button>Add New Application</button> -->
+
+<!-- <a href="/add">
+    <button>Add New Application</button>
+</a> -->
+<div style="text-align:center; margin-bottom:20px;">
+
+    <a href="/add">
+        <button>Add New Application</button>
+    </a>
+
+</div>
+
+
+<br><br>
+
+<table border="1">
+
+<tr>
+    <th>ID</th>
+    <th>Company</th>
+    <th>Role</th>
+    <th>Date Applied</th>
+    <th>Status</th>
+    <th>Actions</th>
+</tr>
+
+{% for app in applications %}
+
+<tr>
+    <td>{{ app[0] }}</td>
+    <td>{{ app[1] }}</td>
+    <td>{{ app[2] }}</td>
+    <td>{{ app[3] }}</td>
+    <td>{{ app[4] }}</td>
+
+    <!-- <td>
+        <a href="/delete/{{ app[0] }}">Delete</a>
+    </td> -->
+
+    <td>
+    <!-- <a href="/edit/{{ app[0] }}">Edit</a>
+    |
+    <a href="/delete/{{ app[0] }}">Delete</a> -->
+
+    <a href="/edit/{{ app[0] }}">✏️ Edit</a>
+    &nbsp;&nbsp;
+    <a href="/delete/{{ app[0] }}">🗑 Delete</a>
+</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+</html>
