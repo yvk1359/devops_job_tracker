@@ -28,7 +28,7 @@ app = Flask(__name__)
 @app.route("/")
 def home():
 
-    conn = sqlite3.connect("database.db")
+    conn = sqlite3.connect("data/database.db")
 
     cursor = conn.cursor()
 
@@ -55,7 +55,7 @@ def add_application():
         status = request.form["status"]
         notes = request.form["notes"]
 
-        conn = sqlite3.connect("database.db")
+        conn = sqlite3.connect("data/database.db")
         cursor = conn.cursor()
 
         cursor.execute("""
@@ -74,7 +74,7 @@ def add_application():
 @app.route("/delete/<int:id>")
 def delete_application(id):
 
-    conn = sqlite3.connect("database.db")
+    conn = sqlite3.connect("data/database.db")
     cursor = conn.cursor()
 
     cursor.execute(
@@ -90,7 +90,7 @@ def delete_application(id):
 @app.route("/edit/<int:id>", methods=["GET", "POST"])
 def edit_application(id):
 
-    conn = sqlite3.connect("database.db")
+    conn = sqlite3.connect("data/database.db")
     cursor = conn.cursor()
 
     if request.method == "POST":
@@ -139,4 +139,4 @@ def edit_application(id):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
