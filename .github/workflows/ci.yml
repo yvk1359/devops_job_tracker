@@ -1,1 +1,16 @@
 ---
+name: test ci
+on:
+  push:
+    branches:
+      - automate
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: checkout
+        uses: action/checkout@v4
+
+      - name: build application
+        run: python-m build
