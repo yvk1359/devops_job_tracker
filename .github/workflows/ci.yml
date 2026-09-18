@@ -28,8 +28,8 @@ jobs:
       - name: verify
         run: ls
 
-      - name: build docker
-        run: docker build -t devops-job-tracker:latest .
+      # - name: build docker
+      #   run: docker build -t devops-job-tracker:latest .
       - name: verify
         run: ls
 
@@ -45,7 +45,8 @@ jobs:
 
           # 1. Map the container port 5000 to the runner host network (-p 5000:5000)
   
-          docker run -d -p 5000:5000 --name app-instance devops-job-tracker:latest
+          docker build -t job_tracker2 .
+          docker run -p 5000:5000 -v job-tracker_data:/app/data job_tracker2
   
           # 2. Wait for it to boot up
   
