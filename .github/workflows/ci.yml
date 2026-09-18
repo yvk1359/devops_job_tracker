@@ -1,0 +1,62 @@
+---
+name: test ci
+on:
+  push:
+    branches:
+      - automate
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: install python
+        run: sudo apt install python3 
+ 
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: install dependencies
+        run: sudo apt-get update
+      - name: install venv
+        run: sudo apt-get install -y python3-venv
+      
+      - name: build installing pip and build
+        run: sudo apt install pip
+
+      - name: upgrade python build
+        run: python -m pip install --upgrade build
+
+      - name: verify
+        run: ls
+
+      # - name: build docker
+      #   run: docker build -t devops-job-tracker:latest .
+      - name: verify
+        run: ls
+
+      # - name: Run Application Container       
+      #   run: |         
+      #     docker run -d --name app-instance devops-job-tracker:latest         
+      #     sleep 60         
+      #     docker logs app-instance
+
+      - name: Run and Test Application Container
+
+        run: |
+
+          # 1. Map the container port 5000 to the runner host network (-p 5000:5000)
+  
+          docker build -t job_tracker2 .
+          docker run -p 5000:5000 -v job-tracker_data:/app/data job_tracker2
+  
+          # 2. Wait for it to boot up
+  
+          sleep 5
+  
+          # 3. Use curl to hit the local interface and print the website's HTML source
+  
+          curl http://127.0.0.1:5000
+
+ 
+      - name: wait
+        run: sleep 60
+      
