@@ -33,11 +33,11 @@ jobs:
       - name: verify
         run: ls
 
-      - name: Run Application Container       
-        run: |         
-          docker run -d --name app-instance devops-job-tracker:latest         
-          sleep 60         
-          docker logs app-instance
+      # - name: Run Application Container       
+      #   run: |         
+      #     docker run -d --name app-instance devops-job-tracker:latest         
+      #     sleep 60         
+      #     docker logs app-instance
 
       - name: Run and Test Application Container
 
