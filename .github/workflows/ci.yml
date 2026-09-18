@@ -36,7 +36,7 @@ jobs:
       - name: Run Application Container       
         run: |         
           docker run -d --name app-instance devops-job-tracker:latest         
-          sleep 3         
+          sleep 60         
           docker logs app-instance
       - name: wait
         run: sleep 60
