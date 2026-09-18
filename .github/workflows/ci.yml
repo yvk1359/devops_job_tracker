@@ -38,6 +38,24 @@ jobs:
           docker run -d --name app-instance devops-job-tracker:latest         
           sleep 60         
           docker logs app-instance
+
+      - name: Run and Test Application Container
+
+        run: |
+
+          # 1. Map the container port 5000 to the runner host network (-p 5000:5000)
+  
+          docker run -d -p 5000:5000 --name app-instance devops-job-tracker:latest
+  
+          # 2. Wait for it to boot up
+  
+          sleep 5
+  
+          # 3. Use curl to hit the local interface and print the website's HTML source
+  
+          curl http://127.0.0.1:5000
+
+ 
       - name: wait
         run: sleep 60
       
