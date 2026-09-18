@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: install python
-        run: uv python install 3.12 --default
+        run: sudo apt install python3 
  
       - name: checkout
         uses: actions/checkout@v4
