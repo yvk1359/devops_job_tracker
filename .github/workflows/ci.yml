@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: checkout
-        uses: action/checkout@v4
+        uses: actions/checkout@v4
 
       - name: build application
         run: python-m build
