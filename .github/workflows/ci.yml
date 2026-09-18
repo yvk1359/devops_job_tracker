@@ -17,3 +17,6 @@ jobs:
 
       - name: build installing pip and build
         run: sudo apt install pip
+
+      - name: build application
+        run: python3 -m build
