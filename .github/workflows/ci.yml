@@ -14,7 +14,11 @@ jobs:
  
       - name: checkout
         uses: actions/checkout@v4
-
+      - name: install dependencies
+        run: sudo apt-get update
+      - name: install venv
+        run: sudo apt-get install -y python3-venv
+      
       - name: build installing pip and build
         run: sudo apt install pip
 
@@ -23,3 +27,5 @@ jobs:
 
       - name: build application
         run: python3 -m build --no-isolation
+
+      
