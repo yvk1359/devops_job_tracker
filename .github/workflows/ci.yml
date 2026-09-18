@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - automate
+      - main
+  workflow_dispatch: 
 
 jobs:
   build:
@@ -25,13 +27,13 @@ jobs:
       - name: upgrade python build
         run: python -m pip install --upgrade build
 
-      - name: verify
-        run: ls
+      # - name: verify
+      #   run: ls
 
       # - name: build docker
       #   run: docker build -t devops-job-tracker:latest .
-      - name: verify
-        run: ls
+      # - name: verify
+      #   run: ls
 
       # - name: Run Application Container       
       #   run: |         
@@ -50,13 +52,13 @@ jobs:
   
           # 2. Wait for it to boot up
   
-          sleep 5
+          #sleep 5
   
           # 3. Use curl to hit the local interface and print the website's HTML source
   
           curl http://127.0.0.1:5000
 
  
-      - name: wait
-        run: sleep 60
+      # - name: wait
+      #   run: sleep 60
       
