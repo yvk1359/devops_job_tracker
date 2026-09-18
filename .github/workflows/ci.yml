@@ -15,5 +15,5 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
 
-      - name: build application
-        run: python-m build
+      - name: build installing pip and build
+        run: python3 -pip install build
